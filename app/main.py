@@ -1,49 +1,45 @@
-from os import environ
-from PyQt5 import QtWidgets, uic
-import sys
+from sqlalchemy import create_engine
+from sqlalchemy.orm import Session
+from app.entity.user import User, Role, User_type
+from app.repository.user_repository import User_repository
+import bcrypt
 
 
-# Main class for initializing main app window
-class MainScreen(QtWidgets.QMainWindow):
+def insert_example(session):
+    new_user = User(login='new_user', email='new_user@test.com',
+                    password='super trudne haslo!@#', role_id=3, user_type_id=2)
+    user_repository = User_repository(session)
+    new_user_id = user_repository.insert(new_user)
 
-    # Initialization of welcome screen, connecting buttons to functions
-    def __init__(self):
-        super(MainScreen, self).__init__()
-        uic.loadUi('welcome_screen.ui', self)
-        self.login.clicked.connect(self.gotologin)
-
-    # Function of "Zaloguj" button in main window screen
-    def gotologin(self):
-        login = LoginScreen()
-        widget.addWidget(login)
-        widget.setCurrentIndex(widget.currentIndex() + 1)
+    if new_user_id is None:
+        print('nope')
+    else:
+        print(new_user_id)
 
 
-# Class initialization of login screen
-class LoginScreen(QtWidgets.QMainWindow):
-    def __init__(self):
-        super(LoginScreen, self).__init__()
-        uic.loadUi("login_screen.ui", self)
-        self.password_field.setEchoMode(QtWidgets.QLineEdit.Password)
-        self.login.clicked.connect(self.login_function)
+def login_example(session):
+    example_password = 'wrong_password'
+    example_login = 'new_user_but_not_exists'
 
-    # Function of "Zaloguj" button in login screen
-    def login_function(self):
-        user = self.login_field.text()
-        password = self.password_field.text()
+    user_repository = User_repository(session)
+    if user_repository.getByLogin(example_login):
+        print('exists')
+    else:
+        print('user not exists')
 
-        if len(user) == 0 or len(password) == 0:
-            self.login_error.setText("Proszę uzupełnić wszystkie pola.")
+    example_password = 'super trudne haslo!@#'
+    example_login = 'new_user'
+    user_from_db = user_repository.getByLogin(example_login)
+    if user_from_db:
+        if bcrypt.checkpw(example_password.encode("utf-8"),
+                          user_from_db.password.encode("utf-8")):
+            print("ok")
 
 
-# Basic main init (loading Qt functions, screen resolution,
-# showing result on the screen)
 if __name__ == "__main__":
-    app = QtWidgets.QApplication(sys.argv)
-    win = MainScreen()
-    widget = QtWidgets.QStackedWidget()
-    widget.addWidget(win)
-    widget.setFixedHeight(600)
-    widget.setFixedWidth(800)
-    widget.show()
-    sys.exit(app.exec_())
+    engine = create_engine('postgresql://byt:byt!123@localhost:5400/byt')
+    session = Session(engine)
+
+    insert_example(session)
+    login_example(session)
+    

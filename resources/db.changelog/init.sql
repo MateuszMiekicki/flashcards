@@ -1,5 +1,5 @@
 CREATE TABLE "role" (
-    id INT,
+    id SERIAL,
     role VARCHAR NOT NULL UNIQUE,
     PRIMARY KEY (id)
 );
@@ -8,7 +8,7 @@ VALUES (1, 'admin'),
     (2, 'moderator'),
     (3, 'user');
 CREATE TABLE user_type (
-    id INT,
+    id SERIAL,
     type VARCHAR NOT NULL UNIQUE,
     PRIMARY KEY (id)
 );
@@ -16,22 +16,28 @@ INSERT INTO user_type
 VALUES (1, 'standard'),
     (2, 'premium');
 CREATE TABLE "user" (
-    id INT,
+    id SERIAL,
     role_id INT NOT NULL,
     user_type_id INT NOT NULL,
+    login VARCHAR NOT NULL UNIQUE,
     email VARCHAR NOT NULL UNIQUE,
     password VARCHAR NOT NULL,
     PRIMARY KEY (id),
     CONSTRAINT role_fk FOREIGN KEY (role_id) REFERENCES "role" (id),
     CONSTRAINT user_type_fk FOREIGN KEY (user_type_id) REFERENCES user_type (id)
 );
+INSERT INTO "user" 
+VALUES (1, 1, 2, 'admin', 'admin@flashcards.com', 'password'),
+    (2, 2, 2, 'mod', 'mod@flashcards.com', 'password'),
+    (3, 3, 1, 'user', 'user@flashcards.com', 'password'),
+    (4, 3, 2, 'premium', 'premium@flashcards.com', 'password');
 CREATE TABLE setting (
-    id INT,
+    id SERIAL,
     name VARCHAR NOT NULL UNIQUE,
     PRIMARY KEY (id)
 );
 CREATE TABLE user_setting (
-    id INT,
+    id SERIAL,
     user_id INT NOT NULL,
     setting_id INT NOT NULL,
     value VARCHAR NOT NULL UNIQUE,
@@ -40,12 +46,12 @@ CREATE TABLE user_setting (
     CONSTRAINT setting_fk FOREIGN KEY (setting_id) REFERENCES setting (id)
 );
 CREATE TABLE category (
-    id INT,
+    id SERIAL,
     name VARCHAR NOT NULL UNIQUE,
     PRIMARY KEY (id)
 );
 CREATE TABLE subcategory (
-    id INT,
+    id SERIAL,
     category_id INT NOT NULL,
     subcategory_id INT,
     name VARCHAR NOT NULL,
@@ -53,12 +59,12 @@ CREATE TABLE subcategory (
     CONSTRAINT section_fk FOREIGN KEY (category_id) REFERENCES category (id)
 );
 CREATE TABLE game_mode (
-    id INT,
+    id SERIAL,
     mode VARCHAR NOT NULL,
     PRIMARY KEY (id)
 );
 CREATE TABLE set_cards (
-    id INT,
+    id SERIAL,
     game_mode_id INT NOT NULL,
     subcategory_id INT NOT NULL,
     user_id INT NOT NULL,
@@ -69,20 +75,20 @@ CREATE TABLE set_cards (
     CONSTRAINT user_fk FOREIGN KEY (user_id) REFERENCES "user" (id)
 );
 CREATE TABLE card (
-    id INT,
+    id SERIAL,
     set_cards_id INT NOT NULL,
     PRIMARY KEY (id),
     CONSTRAINT set_cards_fk FOREIGN KEY (set_cards_id) REFERENCES set_cards (id)
 );
 CREATE TABLE question (
-    id INT,
+    id SERIAL,
     card_id INT NOT NULL,
     content VARCHAR NOT NULL,
     PRIMARY KEY (id),
     CONSTRAINT card_fk FOREIGN KEY (card_id) REFERENCES card (id)
 );
 CREATE TABLE question_answer (
-    id INT,
+    id SERIAL,
     question_id INT NOT NULL,
     content VARCHAR NOT NULL,
     is_correct_answer BOOLEAN NOT NULL,
