@@ -297,6 +297,35 @@ color:white;}</string>
        <bool>true</bool>
       </property>
      </widget>
+     <widget class="QPushButton" name="backbtn">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>390</y>
+        <width>31</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton#backbtn{
+background-color: qlineargradient(spread:pad, x1:0.017, y1:0.937409, x2:1, y2:0, stop:0 rgba(17, 9, 61, 0), stop:1 rgba(255, 255, 255, 0));
+border-radius: 7px;
+color: rgba(226, 226, 226, 227);
+font-weight: bold;
+}
+QPushButton#backbtn:hover{
+background-color: qlineargradient(spread:pad, x1:0.017, y1:0.937409, x2:1, y2:0, stop:0 rgba(17, 9, 61, 200), stop:0.295455 rgba(255, 255, 255, 0));
+}
+QPushButton#backbtn:pressed{
+padding-left:2px;
+padding-top:2px;
+background-color:qlineargradient(spread:pad, x1:0.017, y1:0.937409, x2:1, y2:0, stop:0 rgba(17, 9, 61, 200), stop:0.295455 rgba(255, 255, 255, 0));
+}</string>
+      </property>
+      <property name="text">
+       <string>&lt;--</string>
+      </property>
+     </widget>
      <zorder>accountbtn</zorder>
      <zorder>loginbtn</zorder>
      <zorder>login_error</zorder>
@@ -306,6 +335,7 @@ color:white;}</string>
      <zorder>password_field</zorder>
      <zorder>widget</zorder>
      <zorder>forgot_passwordtxt</zorder>
+     <zorder>backbtn</zorder>
     </widget>
     <widget class="QPushButton" name="exitbtn">
      <property name="geometry">

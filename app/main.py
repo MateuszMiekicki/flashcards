@@ -49,6 +49,7 @@ class CreateAccountScreen(QMainWindow):
         super(CreateAccountScreen, self).__init__()
         uic.loadUi("createAccount_screen.ui", self)
         self.exitbtn.clicked.connect(lambda: widget.close())
+        self.backbtn.clicked.connect(lambda: widget.setCurrentIndex(widget.currentIndex() - 2))
 
 
 # Class initialization of login screen
@@ -58,8 +59,9 @@ class LoginScreen(QMainWindow):
         uic.loadUi("login_screen.ui", self)
         self.password_field.setEchoMode(QtWidgets.QLineEdit.Password)
         self.loginbtn.clicked.connect(self.login_function)
-        self.exitbtn.clicked.connect(lambda: widget.close())
         self.accountbtn.clicked.connect(lambda: widget.setCurrentIndex(widget.currentIndex() + 1))
+        self.exitbtn.clicked.connect(lambda: widget.close())
+        self.backbtn.clicked.connect(lambda: widget.setCurrentIndex(widget.currentIndex() - 1))
         self.oldPos = self.pos()
 
     # Function of "Zaloguj" button in login screen
