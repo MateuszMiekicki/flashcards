@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
-from app.entity.user import User
+from app.entity.user import User, Role
 from sqlalchemy.sql import exists
-from sqlalchemy import or_, literal, exc
+from sqlalchemy import or_, literal, exc, update
 import bcrypt
 
 
@@ -41,3 +41,9 @@ class User_repository:
 
     def getByEmail(self, email: str):
         return self.session.query(User).filter(User.email == email).first()
+
+    def change_role(self, user: User, role: Role):
+        user.role_id = role.id
+
+    def get_role(self, user):
+        return self.session.query(User).join(Role).filter(Role.id == user.role_id).first()

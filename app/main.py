@@ -2,12 +2,12 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import Session
 from app.entity.user import User, Role, User_type
 from app.repository.user_repository import User_repository
+from app.repository.role_repository import Role_repository
 import bcrypt
 
 
 def insert_example(session):
-    new_user = User(login='new_user', email='new_user@test.com',
-                    password='super trudne haslo!@#', role_id=3, user_type_id=2)
+    new_user = User('new_user@test.com', 'new_user', 'super trudne haslo!@#')
     user_repository = User_repository(session)
     new_user_id = user_repository.insert(new_user)
 
@@ -36,10 +36,45 @@ def login_example(session):
             print("ok")
 
 
+# def update_role_example(session):
+#     user_repository = User_repository(session)
+
+#     user = user_repository.getByLogin('user@flashcards.com')
+
+#     user_repository.change_role(user, )
+
+def print_all_role(session):
+    role_repository = Role_repository(session)
+    roles = role_repository.get_all_roles()
+    for role in roles:
+        print(role.role)
+
+
+def get_all_user_by_role(session):
+    role_repository = Role_repository(session)
+    roles = role_repository.get_all_roles()
+    for role in roles:
+        print(role.role)
+        for user in role_repository.get_all_user_by_role(role):
+            print(user.id)
+
+
+def get_user_role(session, user: User):
+    user_repository = User_repository(session)
+    user = user_repository.get_role(user)
+    print(user.email)
+    print(user.role.role)
+
+
 if __name__ == "__main__":
     engine = create_engine('postgresql://byt:byt!123@localhost:5400/byt')
     session = Session(engine)
 
     insert_example(session)
     login_example(session)
-    
+    print_all_role(session)
+    get_all_user_by_role(session)
+
+    user_repository = User_repository(session)
+    user = user_repository.getByEmail('admin@flashcards.com')
+    get_user_role(session, user)
