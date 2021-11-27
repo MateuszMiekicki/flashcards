@@ -3,18 +3,11 @@ CREATE TABLE "role" (
     role VARCHAR NOT NULL UNIQUE,
     PRIMARY KEY (id)
 );
-INSERT INTO "role"
-VALUES (1, 'admin'),
-    (2, 'moderator'),
-    (3, 'user');
 CREATE TABLE user_type (
     id SERIAL,
     type VARCHAR NOT NULL UNIQUE,
     PRIMARY KEY (id)
 );
-INSERT INTO user_type
-VALUES (1, 'standard'),
-    (2, 'premium');
 CREATE TABLE "user" (
     id SERIAL,
     role_id INT NOT NULL,
@@ -26,11 +19,6 @@ CREATE TABLE "user" (
     CONSTRAINT role_fk FOREIGN KEY (role_id) REFERENCES "role" (id),
     CONSTRAINT user_type_fk FOREIGN KEY (user_type_id) REFERENCES user_type (id)
 );
-INSERT INTO "user" 
-VALUES (1, 1, 2, 'admin', 'admin@flashcards.com', 'password'),
-    (2, 2, 2, 'mod', 'mod@flashcards.com', 'password'),
-    (3, 3, 1, 'user', 'user@flashcards.com', 'password'),
-    (4, 3, 2, 'premium', 'premium@flashcards.com', 'password');
 CREATE TABLE setting (
     id SERIAL,
     name VARCHAR NOT NULL UNIQUE,
