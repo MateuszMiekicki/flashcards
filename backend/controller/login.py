@@ -16,7 +16,7 @@ class User(BaseModel):
     login: str
     email: str
     password: str
-
+    
 
 @router.post("/login", status_code=status.HTTP_201_CREATED)
 async def login(user: User):
