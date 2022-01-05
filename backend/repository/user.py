@@ -1,6 +1,8 @@
 from backend.database.entity.entity import Role_entity, User_entity
 from sqlalchemy.orm import Session
 
+import bcrypt
+
 
 class User_repository():
     def __init__(self, session: Session):
@@ -18,3 +20,9 @@ class User_repository():
     def insert(self, user_entity: User_entity):
         self.session.add(user_entity)
         self.session.commit()
+
+    def authenticate(self, login: str, password: str):
+        user = self.session.query(User_entity).filter_by(login=login).first()
+        if user:
+            return bcrypt.checkpw(password.encode('utf8'), user.password.encode('utf8'))
+        return False
