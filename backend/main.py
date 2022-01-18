@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from backend.controller import login, register
 from backend.database import db
+from backend.controller.authenticate import Authenticate
+from fastapi.security import HTTPBearer
 app = FastAPI()
 app.include_router(login.router)
 app.include_router(register.router)
@@ -14,6 +16,8 @@ async def startup():
     driver = db.Driver.none
     database = "byt"
     app.state.db = db.Database().connect(dialect, driver, address, database, auth)
+    app.state.authenticate = Authenticate(app.state.db)
+    app.state.security = HTTPBearer()
 
 
 @app.get("/")
