@@ -3,11 +3,13 @@ CREATE TABLE "role" (
     role VARCHAR NOT NULL UNIQUE,
     PRIMARY KEY (id)
 );
+insert into "role" values(1, 'admin'),(2, 'mod'), (3,'user');
 CREATE TABLE user_type (
     id SERIAL,
     type VARCHAR NOT NULL UNIQUE,
     PRIMARY KEY (id)
 );
+insert into user_type values(1, 'standard'),(2, 'premium');
 CREATE TABLE "user" (
     id SERIAL,
     role_id INT NOT NULL,
