@@ -15,23 +15,10 @@ CREATE TABLE "user" (
     login VARCHAR NOT NULL UNIQUE,
     email VARCHAR NOT NULL UNIQUE,
     password VARCHAR NOT NULL,
+    is_activate BOOLEAN NOT NULL,
     PRIMARY KEY (id),
     CONSTRAINT role_fk FOREIGN KEY (role_id) REFERENCES "role" (id),
     CONSTRAINT user_type_fk FOREIGN KEY (user_type_id) REFERENCES user_type (id)
-);
-CREATE TABLE setting (
-    id SERIAL,
-    name VARCHAR NOT NULL UNIQUE,
-    PRIMARY KEY (id)
-);
-CREATE TABLE user_setting (
-    id SERIAL,
-    user_id INT NOT NULL,
-    setting_id INT NOT NULL,
-    value VARCHAR NOT NULL UNIQUE,
-    PRIMARY KEY (id),
-    CONSTRAINT user_fk FOREIGN KEY (user_id) REFERENCES "user" (id),
-    CONSTRAINT setting_fk FOREIGN KEY (setting_id) REFERENCES setting (id)
 );
 CREATE TABLE category (
     id SERIAL,
@@ -46,19 +33,12 @@ CREATE TABLE subcategory (
     PRIMARY KEY (id),
     CONSTRAINT section_fk FOREIGN KEY (category_id) REFERENCES category (id)
 );
-CREATE TABLE game_mode (
-    id SERIAL,
-    mode VARCHAR NOT NULL,
-    PRIMARY KEY (id)
-);
 CREATE TABLE set_cards (
     id SERIAL,
-    game_mode_id INT NOT NULL,
     subcategory_id INT NOT NULL,
     user_id INT NOT NULL,
     name VARCHAR NOT NULL,
     PRIMARY KEY (id),
-    CONSTRAINT game_mode_fk FOREIGN KEY (game_mode_id) REFERENCES game_mode (id),
     CONSTRAINT category_fk FOREIGN KEY (subcategory_id) REFERENCES subcategory (id),
     CONSTRAINT user_fk FOREIGN KEY (user_id) REFERENCES "user" (id)
 );
