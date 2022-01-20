@@ -1,10 +1,11 @@
 from fastapi import FastAPI
-from backend.controller import user
+from backend.controller import user, flashcards
 from backend.configure import database
 from fastapi.security import HTTPBearer
 from backend.security.authenticate import Authenticate
 app = FastAPI()
 app.include_router(user.router)
+app.include_router(flashcards.router)
 
 
 @app.on_event("startup")
