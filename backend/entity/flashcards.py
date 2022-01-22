@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, ForeignKey, Boolean
 from sqlalchemy.orm import declarative_base, relationship
 from backend.entity.user import User
-Base = declarative_base()
+from backend.entity.base import Base
 
 
 class Category(Base):
@@ -31,13 +31,15 @@ class SetCards(Base):
     __tablename__ = 'set_cards'
 
     id = Column(Integer, primary_key=True)
+    name = Column(String, nullable=False, unique=True)
     subcategory_id = Column(Integer, ForeignKey(
         'subcategory.id'), nullable=False)
     subcategory = relationship('Subcategory', backref='set_cards')
     user_id = Column(Integer, ForeignKey('user.id'), nullable=False)
-    subcategory = relationship('User', backref='set_cards')
+    user = relationship('User', backref='set_cards')
 
-    def __init__(self, subcategory_id: int, user_id: int):
+    def __init__(self, name: str, subcategory_id: int, user_id: int):
+        self.name = name
         self.subcategory_id = subcategory_id
         self.user_id = user_id
 

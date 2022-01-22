@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, ForeignKey, Boolean
 from sqlalchemy.orm import declarative_base, relationship
-Base = declarative_base()
+from backend.entity.base import Base
 
 
 class User(Base):
@@ -16,12 +16,12 @@ class User(Base):
     user_type_id = Column(Integer, ForeignKey('user_type.id'), nullable=False)
     user_type = relationship('User_type', backref='user')
 
-    def __init__(self, email: str, login: str, password: str):
+    def __init__(self, email: str, login: str, password: str, role_id=3):
         self.email = email
         self.login = login
         self.password = password
         self.user_type_id = 1
-        self.role_id = 3
+        self.role_id = role_id
         self.is_activate = True
 
 

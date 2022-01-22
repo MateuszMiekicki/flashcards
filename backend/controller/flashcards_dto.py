@@ -1,4 +1,5 @@
 from multiprocessing.connection import answer_challenge
+from unicodedata import category
 from pydantic import BaseModel, Required
 from typing import List
 
@@ -27,4 +28,7 @@ class Card(BaseModel):
 
 
 class SetCard(BaseModel):
-    card: List[Card] = list()
+    name: str
+    category_name: str
+    subcategory_name: str
+    cards: List[Card] = list()

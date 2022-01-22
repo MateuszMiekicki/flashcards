@@ -41,6 +41,7 @@ def get_all_subcategories_from_category(request: Request,
     repo = repository.Subcategory(request.app.state.database)
     category_id = repository.Category(
         request.app.state.database).category_id(subcategory_dto.category_name)
+    category_id = category_id[0]
     if category_id is None:
         raise HTTPException(status_code=404, detail='Category not found')
     if repo.subcategory_id(category_id, subcategory_dto.name) is not None:
@@ -58,7 +59,29 @@ def get_all_subcategories_from_category(request: Request, category_name):
 
 @router.post('/flashcards', status_code=status.HTTP_201_CREATED)
 def add_flashcard(request: Request,
-                  set_card: dto.SetCard):
-    for card in set_card.card:
-        print(card.question.content)
-    
+                  set_card: dto.SetCard,
+                  credentials: HTTPAuthorizationCredentials = Security(security)):
+    token = credentials.credentials
+    payload = request.app.state.authenticate.decode_token(token)
+    repo = repository.Category(request.app.state.database)
+    category_id = repo.category_id(set_card.category_name)
+    category_id = category_id[0]
+    repo = repository.Subcategory(request.app.state.database)
+    subcategory_id = repo.subcategory_id(
+        category_id, set_card.subcategory_name)
+    subcategory_id = subcategory_id[0]
+    repo = repository.SetCards(request.app.state.database)
+
+    set_card_entity = entity.SetCards(
+        set_card.name, int(subcategory_id), int(payload['sub']))
+
+    print(set_card_entity.subcategory_id)
+    print(set_card_entity.user_id)
+
+    set_card_id = repo.insert(set_card_entity)
+    # for card in set_card.cards:
+    #         question_entity = entity.Question(card.question.content)
+    #         answer_entity
+
+    #     set_card_entity
+    #     print(card.question.content)
