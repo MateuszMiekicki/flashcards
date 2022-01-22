@@ -72,13 +72,10 @@ class LoginScreen(QMainWindow):
     def login_function(self):
         user = self.login_field.text()
         password = self.password_field.text()
-
         if user == 'admin' and password == 'admin':
             widget.addWidget(FlashcardsScreen())
             widget.setCurrentIndex(widget.currentIndex() + 3)
         if len(user) == 0 or len(password) == 0:
-            widget.addWidget(FlashcardsScreen())
-            widget.setCurrentIndex(widget.currentIndex() + 3)
             self.login_error.setText("Proszę uzupełnić wszystkie pola.")
         else:
             self.login_error.setText("Błędne dane, spróbuj ponownie")
@@ -107,6 +104,7 @@ class FlashcardsScreen(QMainWindow):
         uic.loadUi('flashcards_screen.ui', self)
         self.n = 0
         self.m = 0
+        self.cards_counter = 3
         self.number_of_groups = 1
         self.exitbtn.clicked.connect(lambda: widget.close())
         self.hidebtn.clicked.connect(self.hide_menu)
@@ -121,6 +119,8 @@ class FlashcardsScreen(QMainWindow):
         self.removegroup.hide()
         self.removegroup_show = 0
         self.group_2.hide()
+        self.addflash.hide()
+        self.addflash_show = 0
         self.gotogroupsbtn.clicked.connect(self.flashcards_widget_screen)
         self.group_1.clicked.connect(self.flashcards_card_screen)
         self.nextbtn.clicked.connect(self.next_card)
@@ -130,6 +130,8 @@ class FlashcardsScreen(QMainWindow):
         self.confirmbtn.clicked.connect(self.add_group_table)
         self.confirmbtn_2.clicked.connect(self.remove_group_table)
         self.logoutbtn.clicked.connect(self.logout_btn)
+        self.editflashesbtn.clicked.connect(self.add_flash_screen)
+        self.confirmbtn_4.clicked.connect(self.add_flash_card)
         self.oldPos = self.pos()
         self.example = [["2+2=?", "4"], ["Wzór na pole kwadratu", "P=a*a"]]
 
@@ -155,6 +157,7 @@ class FlashcardsScreen(QMainWindow):
                 self.card_inside_txt.resize(641, 141)
                 self.flashcards_card.move(45, 160)
                 self.count_txt.move(650, 223)
+            self.addflash.move(190, 160)
             self.hidebtn.move(5, 10)
             self.hidebtn.setText("->")
         else:
@@ -179,6 +182,7 @@ class FlashcardsScreen(QMainWindow):
                 self.card_inside_txt.resize(461, 141)
                 self.flashcards_card.move(210, 160)
                 self.count_txt.move(476, 223)
+            self.addflash.move(360, 160)
             self.hidebtn.move(130, 10)
             self.hidebtn.setText("<-")
 
@@ -220,6 +224,9 @@ class FlashcardsScreen(QMainWindow):
             self.flashcards_widget_show = 1
             self.edit_buttons.hide()
             self.flashcards_group_edit = 0
+        if self.addflash_show == 1:
+            self.addflash.hide()
+            self.addflash_show = 0
         if self.flashcards_card_show == 1:
             self.flashcards_card.hide()
             self.m, self.n = 0, 0
@@ -244,6 +251,9 @@ class FlashcardsScreen(QMainWindow):
         if self.removegroup_show == 1:
             self.removegroup.hide()
             self.removegroup_show = 0
+        if self.addflash_show == 1:
+            self.addflash.hide()
+            self.addflash_show = 0
         if self.hidebtn.text() == "->":
             if self.flashcards_card_show == 1:
                 self.flashcards_card.resize(711, 251)
@@ -294,6 +304,9 @@ class FlashcardsScreen(QMainWindow):
             self.count_txt.move(650, 223)
             self.edit_buttons.resize(781, 51)
             self.edit_buttons.move(0, 510)
+        elif self.addflash_show == 1:
+            self.addflash.hide()
+            self.addflash_show = 0
         if self.flashcards_widget_show == 0:
             self.flashcards_widget.show()
             self.flashcards_widget_show = 1
@@ -303,6 +316,9 @@ class FlashcardsScreen(QMainWindow):
         elif self.flashcards_group_edit == 1:
             self.edit_buttons.hide()
             self.flashcards_group_edit = 0
+        if self.addflash_show == 1:
+            self.addflash.hide()
+            self.addflash_show = 0
         if self.addgroup_show == 1:
             self.addgroup.hide()
             self.addgroup_show = 0
@@ -340,6 +356,19 @@ class FlashcardsScreen(QMainWindow):
         self.groupname_2 = self.group_name_txt_2.text()
         if self.groupname_2 == self.group_2.text():
             self.group_2.hide()
+
+    def add_flash_screen(self):
+        if self.addflash_show == 1:
+            self.addflash.hide()
+            self.addflash_show = 0
+        if self.addflash_show == 0:
+            self.addflash.show()
+            self.flashcards_widget.hide()
+            self.flashcards_widget_show = 0
+            self.addflash_show = 1
+
+    def add_flash_card(self):
+        self.example[self.cards_counter - 1].append(self.question_txt.text(), self.answer_txt.text())
 
     def logout_btn(self):
         widget.setCurrentIndex(widget.currentIndex() -3)
