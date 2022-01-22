@@ -256,47 +256,6 @@ color: rgba(0,0,0,230);</string>
        <string notr="true">border-image: url(background.png)</string>
       </property>
      </widget>
-     <widget class="QLabel" name="forgot_passwordtxt">
-      <property name="geometry">
-       <rect>
-        <x>100</x>
-        <y>240</y>
-        <width>121</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <family>MS Shell Dlg 2</family>
-        <pointsize>8</pointsize>
-        <weight>50</weight>
-        <italic>false</italic>
-        <bold>false</bold>
-       </font>
-      </property>
-      <property name="mouseTracking">
-       <bool>false</bool>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">QLabel#forgot_passwordtxt{font: 8pt &quot;MS Shell Dlg 2&quot;;
-color: rgb(197, 197, 197);
-}
-QLabel#forgot_passwordtxt:hover{
-color:white;}</string>
-      </property>
-      <property name="text">
-       <string>Zapomniałeś hasła?</string>
-      </property>
-      <property name="textFormat">
-       <enum>Qt::AutoText</enum>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-      <property name="wordWrap">
-       <bool>true</bool>
-      </property>
-     </widget>
      <widget class="QPushButton" name="backbtn">
       <property name="geometry">
        <rect>
@@ -326,6 +285,34 @@ background-color:qlineargradient(spread:pad, x1:0.017, y1:0.937409, x2:1, y2:0, 
        <string>&lt;--</string>
       </property>
      </widget>
+     <widget class="QPushButton" name="forgotpasswordbtn">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>240</y>
+        <width>101</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton#forgotpasswordbtn{
+background-color: rgba(0,0,0,0);
+border-radius: 5px;
+font: 8pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(197, 197, 197);
+border: 1px solid rgba(0,0,0,0);
+}
+QPushButton#forgotpasswordbtn:hover{
+color:white;
+}
+QPushButton#forgotpasswordbtn:pressed{
+color: rgb(197, 197, 197);
+}</string>
+      </property>
+      <property name="text">
+       <string>Zapomniano hasła?</string>
+      </property>
+     </widget>
      <zorder>accountbtn</zorder>
      <zorder>loginbtn</zorder>
      <zorder>login_error</zorder>
@@ -334,8 +321,8 @@ background-color:qlineargradient(spread:pad, x1:0.017, y1:0.937409, x2:1, y2:0, 
      <zorder>login_field</zorder>
      <zorder>password_field</zorder>
      <zorder>widget</zorder>
-     <zorder>forgot_passwordtxt</zorder>
      <zorder>backbtn</zorder>
+     <zorder>forgotpasswordbtn</zorder>
     </widget>
     <widget class="QPushButton" name="exitbtn">
      <property name="geometry">
