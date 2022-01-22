@@ -3,7 +3,6 @@ from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 import backend.repository.flashcards as repository
 import backend.entity.flashcards as entity
 import backend.controller.flashcards_dto as dto
-import bcrypt
 router = APIRouter()
 security = HTTPBearer()
 
@@ -55,3 +54,11 @@ def get_all_subcategories_from_category(request: Request,
 def get_all_subcategories_from_category(request: Request, category_name):
     repo = repository.Subcategory(request.app.state.database)
     return repo.select_all_subcategories_from_category(category_name)
+
+
+@router.post('/flashcards', status_code=status.HTTP_201_CREATED)
+def add_flashcard(request: Request,
+                  set_card: dto.SetCard):
+    for card in set_card.card:
+        print(card.question.content)
+    
