@@ -65,9 +65,9 @@ class Question(Base):
         'card.id'), nullable=False)
     card = relationship('Card', backref='question')
 
-    def __init__(self, content: str, set_cards_id: int):
+    def __init__(self, content: str, card_id: int):
         self.content = content
-        self.set_cards_id = set_cards_id
+        self.card_id = card_id
 
 
 class QuestionAnswer(Base):

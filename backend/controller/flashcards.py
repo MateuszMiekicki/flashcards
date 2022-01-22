@@ -71,17 +71,18 @@ def add_flashcard(request: Request,
         category_id, set_card.subcategory_name)
     subcategory_id = subcategory_id[0]
     repo = repository.SetCards(request.app.state.database)
-
     set_card_entity = entity.SetCards(
         set_card.name, int(subcategory_id), int(payload['sub']))
-
-    print(set_card_entity.subcategory_id)
-    print(set_card_entity.user_id)
-
     set_card_id = repo.insert(set_card_entity)
-    # for card in set_card.cards:
-    #         question_entity = entity.Question(card.question.content)
-    #         answer_entity
 
-    #     set_card_entity
-    #     print(card.question.content)
+    repo = repository.Card(request.app.state.database)
+
+    question_repo = repository.Question(request.app.state.database)
+    question_answer_repo = repository.QuestionAnswer(
+        request.app.state.database)
+    for card in set_card.cards:
+        card_id = repo.insert(entity.Card(set_card_id))
+        id = question_repo.insert(
+            entity.Question(card.question.content, card_id))
+        question_answer_repo.insert(entity.QuestionAnswer(
+            card.answer.content, card.answer.is_correct_answer, id))
