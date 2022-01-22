@@ -1,0 +1,624 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="widget_2" native="true">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>800</width>
+      <height>600</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget#widget_2{background-color:rgba(37, 39, 85, 200);
+border-radius: 20px;
+border:3px solid;}</string>
+    </property>
+    <widget class="QWidget" name="menu_widget" native="true">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>171</width>
+       <height>601</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QWidget#menu_widget{background-color:rgba(37, 39, 85, 200);
+border-radius: 20px;
+border:3px solid;}</string>
+     </property>
+     <widget class="QWidget" name="widget" native="true">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>480</y>
+        <width>151</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(background.png)</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="gotogroupsbtn">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>161</y>
+        <width>131</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton#gotogroupsbtn{
+background-color: qlineargradient(spread:pad, x1:0.017, y1:0.937409, x2:1, y2:0, stop:0 rgba(17, 9, 61, 178), stop:1 rgba(255, 255, 255, 68));
+border-radius: 5px;
+color: rgba(226, 226, 226, 227);
+border: 1px solid rgba(0,0,0,0.15);
+}
+QPushButton#gotogroupsbtn:hover{
+background-color: qlineargradient(spread:pad, x1:0.017, y1:0.937409, x2:1, y2:0, stop:0 rgba(17, 9, 61, 178), stop:0.295455 rgba(255, 255, 255, 68));
+color:white;
+}
+QPushButton#gotogroupsbtn:pressed{
+padding-left:2px;
+padding-top:2px;
+background-color:rgb(100, 100, 132);
+}</string>
+      </property>
+      <property name="text">
+       <string>Fiszki</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="gotoeditorbtn">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>210</y>
+        <width>131</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton#gotoeditorbtn{
+background-color: qlineargradient(spread:pad, x1:0.017, y1:0.937409, x2:1, y2:0, stop:0 rgba(17, 9, 61, 178), stop:1 rgba(255, 255, 255, 68));
+border-radius: 5px;
+color: rgba(226, 226, 226, 227);
+border: 1px solid rgba(0,0,0,0.15);
+}
+QPushButton#gotoeditorbtn:hover{
+background-color: qlineargradient(spread:pad, x1:0.017, y1:0.937409, x2:1, y2:0, stop:0 rgba(17, 9, 61, 178), stop:0.295455 rgba(255, 255, 255, 68));
+color:white;
+}
+QPushButton#gotoeditorbtn:pressed{
+padding-left:2px;
+padding-top:2px;
+background-color:rgb(100, 100, 132);
+}</string>
+      </property>
+      <property name="text">
+       <string>Edytor</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="editflashesbtn">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>259</y>
+        <width>131</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton#editflashesbtn{
+background-color: qlineargradient(spread:pad, x1:0.017, y1:0.937409, x2:1, y2:0, stop:0 rgba(17, 9, 61, 178), stop:1 rgba(255, 255, 255, 68));
+border-radius: 5px;
+color: rgba(226, 226, 226, 227);
+border: 1px solid rgba(0,0,0,0.15);
+}
+QPushButton#editflashesbtn:hover{
+background-color: qlineargradient(spread:pad, x1:0.017, y1:0.937409, x2:1, y2:0, stop:0 rgba(17, 9, 61, 178), stop:0.295455 rgba(255, 255, 255, 68));
+color:white;
+}
+QPushButton#editflashesbtn:pressed{
+padding-left:2px;
+padding-top:2px;
+background-color:rgb(100, 100, 132);
+}</string>
+      </property>
+      <property name="text">
+       <string>Edytuj Fiszki</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="logoutbtn">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>440</y>
+        <width>131</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton#logoutbtn{
+background-color: qlineargradient(spread:pad, x1:0.017, y1:0.937409, x2:1, y2:0, stop:0 rgba(17, 9, 61, 178), stop:1 rgba(255, 255, 255, 68));
+border-radius: 5px;
+color: rgba(226, 226, 226, 227);
+border: 1px solid rgba(0,0,0,0.15);
+}
+QPushButton#logoutbtn:hover{
+background-color: qlineargradient(spread:pad, x1:0.017, y1:0.937409, x2:1, y2:0, stop:0 rgba(17, 9, 61, 178), stop:0.295455 rgba(255, 255, 255, 68));
+color:white;
+}
+QPushButton#logoutbtn:pressed{
+padding-left:2px;
+padding-top:2px;
+background-color:rgb(100, 100, 132);
+}</string>
+      </property>
+      <property name="text">
+       <string>Wyloguj</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="Logo">
+      <property name="geometry">
+       <rect>
+        <x>26</x>
+        <y>62</y>
+        <width>121</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>36</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Fiszki</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QPushButton" name="exitbtn">
+     <property name="geometry">
+      <rect>
+       <x>770</x>
+       <y>0</y>
+       <width>31</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton#exitbtn{
+background-color: qlineargradient(spread:pad, x1:0.017, y1:0.937409, x2:1, y2:0, stop:0 rgba(17, 9, 61, 0), stop:1 rgba(255, 255, 255, 0));
+border-radius: 7px;
+color: rgba(226, 226, 226, 227);
+font-weight: bold;
+}
+QPushButton#exitbtn:hover{
+background-color: qlineargradient(spread:pad, x1:0.017, y1:0.937409, x2:1, y2:0, stop:0 rgba(17, 9, 61, 200), stop:0.295455 rgba(255, 255, 255, 0));
+}
+QPushButton#exitbtn:pressed{
+padding-left:2px;
+padding-top:2px;
+background-color:qlineargradient(spread:pad, x1:0.017, y1:0.937409, x2:1, y2:0, stop:0 rgba(17, 9, 61, 200), stop:0.295455 rgba(255, 255, 255, 0));
+}</string>
+     </property>
+     <property name="text">
+      <string>Х</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="hidebtn">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>12</y>
+       <width>31</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton#hidebtn{
+background-color: qlineargradient(spread:pad, x1:0.017, y1:0.937409, x2:1, y2:0, stop:0 rgba(17, 9, 61, 0), stop:1 rgba(255, 255, 255, 0));
+border-radius: 7px;
+color: rgba(226, 226, 226, 170);
+font-weight: bold;
+border: 2px solid
+}
+QPushButton#hidebtn:hover{
+background-color: qlineargradient(spread:pad, x1:0.017, y1:0.937409, x2:1, y2:0, stop:0 rgba(17, 9, 61, 200), stop:0.295455 rgba(255, 255, 255, 0));
+color: white;
+}
+QPushButton#hidebtn:pressed{
+padding-left:2px;
+padding-top:2px;
+background-color:qlineargradient(spread:pad, x1:0.017, y1:0.937409, x2:1, y2:0, stop:0 rgba(17, 9, 61, 200), stop:0.295455 rgba(255, 255, 255, 0));
+}</string>
+     </property>
+     <property name="text">
+      <string>&lt;-</string>
+     </property>
+    </widget>
+    <widget class="QWidget" name="flashcards_widget" native="true">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>30</y>
+       <width>601</width>
+       <height>561</height>
+      </rect>
+     </property>
+     <widget class="QPushButton" name="group_1">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>131</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton#group_1{background-color:rgba(37, 39, 85, 200);
+border-radius: 20px;
+border:3px solid;}
+QPushButton#group_1:hover{
+background-color: rgba(17, 9, 61, 178);
+color:white;
+}
+QPushButton#group_1:pressed{
+padding-left:2px;
+padding-top:2px;
+background-color:rgb(100, 100, 132);
+}</string>
+      </property>
+      <property name="text">
+       <string>Matematyka</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="edit_buttons" native="true">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>510</y>
+        <width>601</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <widget class="QPushButton" name="removegroupbtn">
+       <property name="geometry">
+        <rect>
+         <x>380</x>
+         <y>10</y>
+         <width>131</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton#removegroupbtn{
+background-color: qlineargradient(spread:pad, x1:0.017, y1:0.937409, x2:1, y2:0, stop:0 rgba(17, 9, 61, 178), stop:1 rgba(255, 255, 255, 68));
+border-radius: 5px;
+color: rgba(226, 226, 226, 227);
+border: 1px solid rgba(0,0,0,0.15);
+}
+QPushButton#removegroupbtn:hover{
+background-color: qlineargradient(spread:pad, x1:0.017, y1:0.937409, x2:1, y2:0, stop:0 rgba(17, 9, 61, 178), stop:0.295455 rgba(255, 255, 255, 68));
+color:white;
+}
+QPushButton#removegroupbtn:pressed{
+padding-left:2px;
+padding-top:2px;
+background-color:rgb(100, 100, 132);
+}</string>
+       </property>
+       <property name="text">
+        <string>Usuń grupę</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="addgroupbtn">
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>10</y>
+         <width>131</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton#addgroupbtn{
+background-color: qlineargradient(spread:pad, x1:0.017, y1:0.937409, x2:1, y2:0, stop:0 rgba(17, 9, 61, 178), stop:1 rgba(255, 255, 255, 68));
+border-radius: 5px;
+color: rgba(226, 226, 226, 227);
+border: 1px solid rgba(0,0,0,0.15);
+}
+QPushButton#addgroupbtn:hover{
+background-color: qlineargradient(spread:pad, x1:0.017, y1:0.937409, x2:1, y2:0, stop:0 rgba(17, 9, 61, 178), stop:0.295455 rgba(255, 255, 255, 68));
+color:white;
+}
+QPushButton#addgroupbtn:pressed{
+padding-left:2px;
+padding-top:2px;
+background-color:rgb(100, 100, 132);
+}</string>
+       </property>
+       <property name="text">
+        <string>Dodaj grupę</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="addgroup" native="true">
+      <property name="geometry">
+       <rect>
+        <x>69</x>
+        <y>419</y>
+        <width>191</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QWidget#addgroup{background-color:rgba(37, 39, 85, 200);
+border-radius: 20px;
+border:3px solid;}</string>
+      </property>
+      <widget class="QLineEdit" name="group_name_txt">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>20</y>
+         <width>131</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="mouseTracking">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgba(0, 0, 0, 0);
+border: none;
+border-bottom: 2px solid rgba(105,118, 132, 255);
+color: rgba(255,255,255,230);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="placeholderText">
+        <string>Nazwa grupy</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="confirmbtn">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>50</y>
+         <width>131</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton#confirmbtn{
+background-color: qlineargradient(spread:pad, x1:0.017, y1:0.937409, x2:1, y2:0, stop:0 rgba(17, 9, 61, 178), stop:1 rgba(255, 255, 255, 68));
+border-radius: 5px;
+color: rgba(226, 226, 226, 227);
+border: 1px solid rgba(0,0,0,0.15);
+}
+QPushButton#confirmbtn:hover{
+background-color: qlineargradient(spread:pad, x1:0.017, y1:0.937409, x2:1, y2:0, stop:0 rgba(17, 9, 61, 178), stop:0.295455 rgba(255, 255, 255, 68));
+color:white;
+}
+QPushButton#confirmbtn:pressed{
+padding-left:2px;
+padding-top:2px;
+background-color:rgb(100, 100, 132);
+}</string>
+       </property>
+       <property name="text">
+        <string>Potwierdź</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QWidget" name="removegroup" native="true">
+      <property name="geometry">
+       <rect>
+        <x>350</x>
+        <y>420</y>
+        <width>191</width>
+        <height>91</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QWidget#removegroup{background-color:rgba(37, 39, 85, 200);
+border-radius: 20px;
+border:3px solid;}</string>
+      </property>
+      <widget class="QLineEdit" name="group_name_txt_2">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>20</y>
+         <width>131</width>
+         <height>20</height>
+        </rect>
+       </property>
+       <property name="mouseTracking">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgba(0, 0, 0, 0);
+border: none;
+border-bottom: 2px solid rgba(105,118, 132, 255);
+color: rgba(255,255,255,230);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="placeholderText">
+        <string>Nazwa grupy</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="confirmbtn_2">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>50</y>
+         <width>131</width>
+         <height>31</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton#confirmbtn_2{
+background-color: qlineargradient(spread:pad, x1:0.017, y1:0.937409, x2:1, y2:0, stop:0 rgba(17, 9, 61, 178), stop:1 rgba(255, 255, 255, 68));
+border-radius: 5px;
+color: rgba(226, 226, 226, 227);
+border: 1px solid rgba(0,0,0,0.15);
+}
+QPushButton#confirmbtn_2:hover{
+background-color: qlineargradient(spread:pad, x1:0.017, y1:0.937409, x2:1, y2:0, stop:0 rgba(17, 9, 61, 178), stop:0.295455 rgba(255, 255, 255, 68));
+color:white;
+}
+QPushButton#confirmbtn_2:pressed{
+padding-left:2px;
+padding-top:2px;
+background-color:rgb(100, 100, 132);
+}</string>
+       </property>
+       <property name="text">
+        <string>Potwierdź</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QPushButton" name="group_2">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>10</y>
+        <width>131</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton#group_2{background-color:rgba(37, 39, 85, 200);
+border-radius: 20px;
+border:3px solid;}
+QPushButton#group_2:hover{
+background-color: rgba(17, 9, 61, 178);
+color:white;
+}
+QPushButton#group_2:pressed{
+padding-left:2px;
+padding-top:2px;
+background-color:rgb(100, 100, 132);
+}</string>
+      </property>
+      <property name="text">
+       <string>default</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="flashcards_card" native="true">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>160</y>
+       <width>541</width>
+       <height>251</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QWidget#flashcards_card{background-color:rgba(37, 39, 85, 200);
+border-radius: 20px;
+border:3px solid;}
+QWidget#flashcards_card:pressed{
+padding-left:2px;
+padding-top:2px;
+background-color:rgb(100, 100, 132);
+}</string>
+     </property>
+     <widget class="QLabel" name="card_inside_txt">
+      <property name="geometry">
+       <rect>
+        <x>36</x>
+        <y>52</y>
+        <width>461</width>
+        <height>141</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>35</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>default</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="nextbtn">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>541</width>
+        <height>251</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton#nextbtn{
+background-color: rgba(0,0,0,0);
+border-radius: 5px;
+}</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="count_txt">
+      <property name="geometry">
+       <rect>
+        <x>476</x>
+        <y>223</y>
+        <width>51</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>default</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
